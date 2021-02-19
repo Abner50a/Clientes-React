@@ -1,0 +1,10 @@
+.card-img-top {
+    width: 20%;
+    height: 350;
+    object-fit: cover;
+}
+
+.menu__serie {
+    display: flex;
+    flex-direction: row;
+}
