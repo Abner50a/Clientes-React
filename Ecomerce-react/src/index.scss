@@ -8,3 +8,40 @@
     width: 100%;
     height: 250px;
 }
+
+.producto {
+    display: flex;
+    flex-direction: row;
+
+    .producto__imagen {
+        height: 350px;
+        width: 400px;
+      }
+
+    .datos__producto {
+        width: 100%;
+    }
+    
+    .card__precio {
+        color: red;
+    }
+      
+
+    .card__producto__boton{
+        margin-top: 1rem;
+        text-align: center;
+        width: 100%;
+    }
+
+    @media (max-width: 800px) {
+        flex-direction: column;
+        
+        .producto__imagen {
+        
+            width: 100%;
+          }
+
+        
+    }
+
+}

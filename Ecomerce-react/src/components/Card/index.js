@@ -3,12 +3,12 @@ import {
   Card, Button, CardImg, CardTitle, CardText, CardDeck,
   CardSubtitle, CardBody, items
 } from 'reactstrap';
-
+import { Link } from 'react-router-dom';
 //import imagen from '.../utils/abc.png';
 
 const Index = ({ getItem }) => {
 
-console.log('getItem')
+// console.log('ad',getItem)
 
 const imagenFalso = 'https://placehold.it/280x140/abc'
 //const imagenFalso = '.../utils/abc.png';
@@ -25,8 +25,10 @@ const imagenFalso = 'https://placehold.it/280x140/abc'
         <h5 class="card-title">{getItem.product_name}</h5>
         <h6 class="card-subtitle mb-2 text-muted">Precio: {getItem.price}</h6>
         <p class="card-text">{getItem.description}</p>
-        <a href="#" class="card-link">Card link</a>
-        <a href="#" class="card-link">Another link</a>
+
+        <Link to={`/producto/${getItem._id}`} > Ver Producto </Link>
+        {/* <a href="#" class="card-link">Ver producto</a> */}
+ 
       </div>
     </div>
 

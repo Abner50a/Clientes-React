@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import Navbar from '../components/Navbar'
+import Navbar from "../components/Navbar";
 import Card from '../components/Card'
 import Axios from 'axios';
 
+import payload from '../utils/payload';
 
 function Home() {
     const [itemBuscado, setItemBuscado] = useState([])
+    const usuario = payload();
+
+    
 
     useEffect(() => {
         const ApiItem = 'https://ecomerce-master.herokuapp.com/api/v1/item';
@@ -38,7 +42,7 @@ function Home() {
 
     return (
         <div className="container fluid ">
-            <Navbar />
+                  <Navbar usuario={usuario} />
             <div class="mt-4  ">
                 <div class="row centrar-card">
                    
