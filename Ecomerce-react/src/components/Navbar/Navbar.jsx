@@ -8,20 +8,53 @@ import {
   Nav,
   NavItem,
   NavLink,
+  DropdownToggle,
+  UncontrolledDropdown,
+  DropdownMenu,
+  DropdownItem
 } from 'reactstrap';
-import Axios from 'axios';
+
 
 
 // import payload from '../../utils/payload';
 import Search from '../Search'
 
-export default function NavbarX( {usuario}) {
+export default function NavbarX({ usuario }) {
 
 
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
 
+  const render = (role) =>  {
+    // console.log(series)
+    return ( 
+    <>{role === 'ADMIN'
+      ?
+      <UncontrolledDropdown nav inNavbar>
+      <DropdownToggle nav caret>
+        Administrador
+          </DropdownToggle>
+      <DropdownMenu right>
+        <DropdownItem>
+      <Link to="/agregar-producto"> Agregar Producto  </Link>    
+            </DropdownItem>
+        {/* <DropdownItem>
+              Option 2
+            </DropdownItem>
+            <DropdownItem divider />
+            <DropdownItem>
+              Reset
+            </DropdownItem> */}
+      </DropdownMenu>
+    </UncontrolledDropdown>
+    :
+    <>
+    </>
+    }
+    </>
+    )
+ }
   return (
     <>
       <Navbar color="light" light expand="md">
@@ -37,13 +70,26 @@ export default function NavbarX( {usuario}) {
                   <NavLink> Bienvenido  {usuario.user.first_name} </NavLink>
                 </NavItem>
 
+
+
                 <NavItem>
-                <NavLink>   Tipo : {usuario.role} </NavLink>
+                  <NavLink>   Tipo : {usuario.role} </NavLink>
                 </NavItem>
+
+
+                {render(usuario.role)}
+
                 <NavItem>
-                <NavLink> <Link to="/logout" >   Logout</Link></NavLink>
+                  <NavLink> <Link to="/logout" >   Logout</Link></NavLink>
                 </NavItem>
+
+
+
+
               </>
+
+
+
 
 
               :
@@ -55,6 +101,8 @@ export default function NavbarX( {usuario}) {
                   <NavLink> <Link to="/registrarse" > Registrarse </Link></NavLink>
                 </NavItem>
               </>
+
+
 
             }
 

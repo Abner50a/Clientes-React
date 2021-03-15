@@ -3,11 +3,15 @@ import NavBar from '../components/Navbar'
 import UserForm from '../hooks/UserForm'
 import Swal from 'sweetalert2'
 import Axios from 'axios'
-
+import { useHistory } from "react-router-dom";
 
 const Login = () => {
-   
+    const history = useHistory();
+    const token = window.localStorage.getItem('token');
 
+    if(token){
+        history.push('/'); 
+    }
 
 
     const enviarFormulario = (inputs) => {
@@ -19,7 +23,7 @@ const Login = () => {
 
         Axios.post('https://ecomerce-master.herokuapp.com/api/v1/signup', inputs )
             .then(({data, status })  => {
-                console.log('funciona', data,status);
+          //      console.log('funciona', data,status);
 
             }  )
             .catch(  error => {

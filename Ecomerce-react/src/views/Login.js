@@ -7,6 +7,13 @@ import { useHistory } from "react-router-dom";
 
 function Login() {
     const history = useHistory();
+    const token = window.localStorage.getItem('token');
+
+    if(token){
+        history.push('/'); 
+    }
+
+
 
     const enviarFormulario = (inputs) => {
        // console.log(inputs)

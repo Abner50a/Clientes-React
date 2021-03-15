@@ -8,6 +8,7 @@ import {
 import Home from "./views/Home";
 import Registrarse from "./views/Registrarse";
 import Descripcion from "./views/Descripcion";
+import AgregarProducto from './views/Admin/AgregarProducto'
 import Login from "./views/Login";
 
 const Logout = () => {
@@ -15,6 +16,7 @@ const Logout = () => {
     return <Redirect to="/"/>;
 }
 
+const isAuthenticated = localStorage.getItem('token');
 
 export default function Routes() {
     return (
@@ -24,7 +26,9 @@ export default function Routes() {
             <Route exact path="/registrarse" component={Registrarse}/>
             <Route exact path="/login" component={Login}/>
             <Route exact path="/producto/:id" component={Descripcion} />
+            <Route exact path="/agregar-producto" component={AgregarProducto}/>
             <Route exact path="/logout" component={Logout}/>
+          
         </Switch>
     </Router>
     );

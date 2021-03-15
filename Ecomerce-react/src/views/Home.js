@@ -9,6 +9,8 @@ function Home() {
     const [itemBuscado, setItemBuscado] = useState([])
     const usuario = payload();
 
+
+ 
     
 
     useEffect(() => {
@@ -33,7 +35,7 @@ function Home() {
         return itemBuscado.map((item) => {
            // const getItem = { item }
             return (
-                <div class="col-auto mb-3">
+                <div  key={item._id}   className="col-auto mb-3">
                 <Card getItem={item} />
                 </div>
             )
@@ -43,8 +45,8 @@ function Home() {
     return (
         <div className="container fluid ">
                   <Navbar usuario={usuario} />
-            <div class="mt-4  ">
-                <div class="row centrar-card">
+            <div className="mt-4  ">
+                <div className="row centrar-card">
                    
                      {mostrarItem()}
 

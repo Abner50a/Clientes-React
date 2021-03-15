@@ -89,9 +89,9 @@ function Descripcion() {
 
                                 {usuario
                                 ?
-                                <button type="button"  onClick={() => handleBoton(datos)} class="btn btn-primary">Para comprar este producto debes estar logeado</button>
+                                <button type="button"  onClick={() => handleBoton(datos)} className="btn btn-primary">Para comprar este producto debes estar logeado</button>
                                 :
-                                <button type="button" class="btn btn-primary" disabled>Para comprar este producto debes estar logeado</button>
+                                <button type="button" className="btn btn-primary" disabled>Para comprar este producto debes estar logeado</button>
                                 }
 
                             </div>
