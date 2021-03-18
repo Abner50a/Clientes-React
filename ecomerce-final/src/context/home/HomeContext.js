@@ -10,6 +10,7 @@ const HomeContext = createContext();
 
 const HomeProvider = ({ children }) => {
   const [carritoCompras,setCarritoCompras] = useState([]);
+  const [precioCarrito, setPrecioCarrito] = useState(0);
 
   const usuario = payload(); 
 
@@ -21,16 +22,43 @@ const HomeProvider = ({ children }) => {
  
 
   const guardarProductos = (datos) => {
+  
     const productoAntes = [
       ...carritoCompras, datos
     ];
 
+    // console.log(datos.price);
+    const sumarProducto = productoAntes.forEach(function (elemento) {
+      
+          setPrecioCarrito(precioCarrito + elemento.price);
+
+    })
+ // console.log(sumarProducto);
+//  setPrecioCarrito(sumarProducto);
     setCarritoCompras(productoAntes)
   }
 
   const eleminarProductos = (datos) => {
     const productoAntes = [...carritoCompras];
-    productoAntes.splice(datos, 1);
+  //  console.log(datos);
+   const borrarProducto = productoAntes.splice(datos, 1);
+    
+
+   console.log(borrarProducto[0].price);
+ //   const sumarProducto = carritoCompras.forEach(function (elemento) {
+ //     console.log(elemento[datos]);
+ // })
+
+    if(borrarProducto[0].price > 0) {
+
+  
+  setPrecioCarrito(precioCarrito - borrarProducto[0].price);
+} else {
+  setPrecioCarrito(precioCarrito)
+}
+    // console.log('cortado: ' , productoAntes)
+  
+
     setCarritoCompras(productoAntes);
   }
 
@@ -66,7 +94,7 @@ const HomeProvider = ({ children }) => {
 
 
 
-const state = [{GetProductos}, usuario , {guardarProductos}, carritoCompras , {eleminarProductos} , setCarritoCompras ];
+const state = [{GetProductos}, usuario , {guardarProductos}, carritoCompras , {eleminarProductos} , setCarritoCompras,precioCarrito ];
 
 
 

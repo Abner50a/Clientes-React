@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import './components/NavBar/';
 import reportWebVitals from './reportWebVitals';
 import Routes from './Routes';
+
 
 
 ReactDOM.render(

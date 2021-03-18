@@ -1,18 +1,38 @@
 import React, {useEffect,useState} from 'react'
 import { Link } from 'react-router-dom';
-import NavBar from '../NavBar/Navbar';
+
+import Swal from 'sweetalert2'
 function ProductosCard(props) {
 
 
 
   const [
-     { GetProductos } 
+     { GetProductos }, usuario , {guardarProductos}
   ] = props.productos;
 
   
   const productos = GetProductos();
  
   
+
+  const handleBoton = (idProducto) => {
+    //  console.log(datos)
+
+   
+      Swal.fire(
+        
+          {
+            
+          icon: 'success',
+          title: 'Agregaste este producto : ',
+          text: 'Agregado!',
+         
+           footer: `Producto Agregado - ${idProducto.product_name}`
+        })
+        .then((result)=> {
+          guardarProductos(idProducto);
+        })
+  }
 
   const mostrarItem = () => {
     const imagenFalso = 'https://placehold.it/280x140/abc';
@@ -42,9 +62,20 @@ function ProductosCard(props) {
                   ? item.price
                   : `No tiene dato` }
                   </h1>
-                  <button class="px-3 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded">
+                  
+                  {usuario ?  (
+                    <button  onClick={() => handleBoton(item)} class="px-3 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded">
                       Agregar a Carrito
                   </button>
+                  )
+                  : 
+                  (
+                    <>
+                    </>
+                  )
+            
+                  }
+                  
               </div>
           </div>
       </div> 

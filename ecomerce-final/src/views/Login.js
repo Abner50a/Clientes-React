@@ -16,6 +16,7 @@ const Login = () => {
                  const {token} = data;
                  window.localStorage.setItem('token',token);
                  history.push('/');
+                 history.go();
  
              })
              .catch( error => {
@@ -38,7 +39,7 @@ const Login = () => {
  
 
     return (
-        <div className=" container mx-auto" >
+        <div className="container px-5 py-24  mx-auto" >
             <NavBar />
 
 
@@ -57,7 +58,7 @@ const Login = () => {
                                         </path>
                                     </svg>
                                 </span>
-                                <input type="text"  onChange={handleInput} value={inputs.email} id="email"  class=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Your email" />
+                                <input type="text"  onChange={handleInput} value={inputs.email} id="email"  class=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Tu correo" />
                             </div>
                         </div>
                         <div class="flex flex-col mb-6">
@@ -68,13 +69,13 @@ const Login = () => {
                                         </path>
                                     </svg>
                                 </span>
-                                <input onChange={handleInput} value={inputs.password} type="password" id="password" class=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Your password" />
+                                <input onChange={handleInput} value={inputs.password} type="password" id="password" class=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Tu password" />
                             </div>
                         </div>
                         
                         <div class="flex w-full">
                             <button type="submit" class="py-2 px-4  bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
-                                Login
+                                Iniciar sesión
                         </button>
                         </div>
                     </form>

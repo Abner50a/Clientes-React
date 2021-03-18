@@ -49,15 +49,17 @@ const FormularioRegistro = () => {
 
 
     return (
+    <div className="contianer px-5 py-24 ">
 
-        <div className="flex flex-col  max-w-md  mx-auto px-10 py-8 bg-white rounded-lg shadow dark:bg-gray-800 sm:px-6 md:px-8 lg:px-10">
+ 
+        <div className="flex flex-col    max-w-md  mx-auto  px-10 py-8 bg-white rounded-lg shadow dark:bg-gray-800 sm:px-6 md:px-8 lg:px-10 abajo">
             <div className="self-center mb-2 text-xl font-light text-gray-800 sm:text-2xl dark:text-white">
                 Crearse una nueva Cuenta
             </div>
             <span className="justify-center text-sm text-center text-gray-500 flex-items-center dark:text-gray-400">
                 ¿Ya tienes una?
         <Link to="/iniciar-sesion" className="text-sm text-blue-500 underline hover:text-blue-700">
-                    Registrarse
+                    Inicia sesion
         </Link>
             </span>
             <div className="p-6 mt-8">
@@ -94,7 +96,7 @@ const FormularioRegistro = () => {
 
             </div>
         </div>
-
+        </div>
     )
 }
 
