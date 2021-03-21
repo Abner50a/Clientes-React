@@ -1,63 +1,63 @@
-import { createContext,useContext,useEffect, useState  } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import payload from '../../utils/payload';
 import Axios from 'axios';
 
 import {
- Redirect 
+  Redirect
 } from "react-router-dom";
 
 const HomeContext = createContext();
 
 const HomeProvider = ({ children }) => {
-  const [carritoCompras,setCarritoCompras] = useState([]);
+  const [carritoCompras, setCarritoCompras] = useState([]);
   const [precioCarrito, setPrecioCarrito] = useState(0);
 
-  const usuario = payload(); 
+  const usuario = payload();
 
 
   const Logout = () => {
     window.localStorage.removeItem('token');
     return <Redirect to="/" />;
   }
- 
+
 
   const guardarProductos = (datos) => {
-  
+
     const productoAntes = [
       ...carritoCompras, datos
     ];
 
     // console.log(datos.price);
     const sumarProducto = productoAntes.forEach(function (elemento) {
-      
-          setPrecioCarrito(precioCarrito + elemento.price);
+
+      setPrecioCarrito(precioCarrito + elemento.price);
 
     })
- // console.log(sumarProducto);
-//  setPrecioCarrito(sumarProducto);
+    // console.log(sumarProducto);
+    //  setPrecioCarrito(sumarProducto);
     setCarritoCompras(productoAntes)
   }
 
   const eleminarProductos = (datos) => {
     const productoAntes = [...carritoCompras];
-  //  console.log(datos);
-   const borrarProducto = productoAntes.splice(datos, 1);
-    
+    //  console.log(datos);
+    const borrarProducto = productoAntes.splice(datos, 1);
 
-   console.log(borrarProducto[0].price);
- //   const sumarProducto = carritoCompras.forEach(function (elemento) {
- //     console.log(elemento[datos]);
- // })
 
-    if(borrarProducto[0].price > 0) {
+    console.log(borrarProducto[0].price);
+    //   const sumarProducto = carritoCompras.forEach(function (elemento) {
+    //     console.log(elemento[datos]);
+    // })
 
-  
-  setPrecioCarrito(precioCarrito - borrarProducto[0].price);
-} else {
-  setPrecioCarrito(precioCarrito)
-}
+    if (borrarProducto[0].price > 0) {
+
+
+      setPrecioCarrito(precioCarrito - borrarProducto[0].price);
+    } else {
+      setPrecioCarrito(precioCarrito)
+    }
     // console.log('cortado: ' , productoAntes)
-  
+
 
     setCarritoCompras(productoAntes);
   }
@@ -67,26 +67,26 @@ const HomeProvider = ({ children }) => {
 
     useEffect(() => {
       const ApiItem = 'https://ecomerce-master.herokuapp.com/api/v1/item';
-  
+
       const buscanddProducto = async () => {
-          const { data } = await Axios.get(ApiItem, {
-  
-          })
-  
-          setItemBuscado(data);
+        const { data } = await Axios.get(ApiItem, {
+
+        })
+
+        setItemBuscado(data);
       }
-  
+
       //   console.log(itemBuscado)
       buscanddProducto();
-  
-  
-  }, [])
 
-  return itemBuscado;
- 
+
+    }, [])
+
+    return itemBuscado;
+
   }
 
- 
+
   const GetProductosById = () => {
 
   }
@@ -94,7 +94,7 @@ const HomeProvider = ({ children }) => {
 
 
 
-const state = [{GetProductos}, usuario , {guardarProductos}, carritoCompras , {eleminarProductos} , setCarritoCompras,precioCarrito ];
+  const state = [{ GetProductos }, usuario, { guardarProductos }, carritoCompras, { eleminarProductos }, setCarritoCompras, precioCarrito];
 
 
 
@@ -123,5 +123,5 @@ const HomeContextUse = () => {
 export {
   HomeContextUse,
   HomeProvider,
-  
+
 }
